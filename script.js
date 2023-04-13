@@ -1,4 +1,5 @@
 const options = ['rock', 'scissors', 'paper'];
+const rounds = 5
 
 function getComputerChoice() {
     // randomly chooses  one of three options for the computer
@@ -40,35 +41,40 @@ function playRound(playerChoice, computerChoice) {
 }
 
 function playGame() {
-    let score = 0;
+    let playerWins = 0;
+    let computerWins = 0;
+
     // plays five rounds and gets the winner
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < rounds; i++) {
         const playerChoice = getPlayerChoice(); 
         const computerChoice = getComputerChoice();
+
         let roundWinner = playRound(playerChoice, computerChoice);
 
         alert(`Player played ${playerChoice}. Computer played ${computerChoice}. Winner ${roundWinner}`)
-        console.log('')
+
         switch(roundWinner) {
             case 'tie':
                 break; 
             case 'player':
-                score++;
+                playerWins++;
                 break;
             case 'computer':
-                score--;
+                computerWins++;
                 break;   
         }
+        console.table(`Computer: ${computerWins}`, `Player: ${playerWins}`)
     }
     
     // if we made 5 rounds and no winner check who has more points
-    switch (true) {
-        case (score === 0):
-            return 'tie';
-        case (score <= 0):
-            return 'computer'
-        case (score >= 0):
-            return 'player'
+    if (computerWins === playerWins) {
+        return 'tie';
+    }
+    else if (computerWins > playerWins) {
+        return 'computer';
+    }
+    else {
+        return 'player';
     }
 }
 
