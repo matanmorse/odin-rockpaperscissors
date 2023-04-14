@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="script.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
     <div style="text-align: center; height: fit-content; margin: auto">ROCK PAPER SCISSORS</div>
     <div></div>
+    <div class="main-content">
+        <div class="results">
+            <p class="result-text">Welcome to Rock Paper Scissors! Computer score: <strong><span class="computer-score">0</span></strong> Player Score: <strong><span class="player-score">0</span></strong>
+            Rounds left: <strong><span class="rounds-left"></span></strong></p>
+        </div>
+        <div class="options">
+            <button  value="rock">Rock</button>
+            <button value="paper">Paper</button>
+            <button value="scissors">Scissors</button>
+        </div>
+    </div>
 </body>
 </html>
