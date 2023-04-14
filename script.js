@@ -2,30 +2,7 @@ const options = ['rock', 'scissors', 'paper'];
 const rounds = 5
 let round = rounds;
 
-// initialize page
-addEventListener("DOMContentLoaded", (event) => {
-    // update round counter
-    console.log('initializing...')
-    roundsLeft = document.querySelector('.rounds-left');
-    roundsLeft.textContent = rounds;
 
-    // add function to buttons
-    buttons = document.querySelectorAll('.options > *')
-
-    buttons.forEach(element => {
-        // simulate round when user presses a button
-        element.addEventListener('click', (event) => {
-            playerChoice = element.value;
-            computerChoice = getComputerChoice()
-            console.log(`player choice: ${playerChoice}`);
-            updateUi(playRound(playerChoice, computerChoice));
-        })
-    });
-})
-
-function updateUi(winner, rounds, playerChoice, computerChoice) {
-    // after a round call to update the user interface
-}
 
 
 function getComputerChoice() {
@@ -101,7 +78,6 @@ function playGame() {
 
         let roundWinner = playRound(playerChoice, computerChoice);
 
-        // alert(`Player played ${playerChoice}. Computer played ${computerChoice}. Winner ${roundWinner}`)
 
         switch(roundWinner) {
             case 'tie':
@@ -123,4 +99,3 @@ function playGame() {
 
 result = playGame()
 console.log(result)
-// alert(result.toUpperCase())
