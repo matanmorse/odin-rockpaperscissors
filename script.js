@@ -1,9 +1,29 @@
 const options = ['rock', 'scissors', 'paper'];
 const rounds = 5
 let round = rounds;
+let playerWins = 0;
+let computerWins = 0;
+let computerChoice = "";
+let playerChoice = "";
+let roundWinner = "";
 
+// initialize page 
+addEventListener('DOMContentLoaded', (event) => {
+    // add functionality to buttons to play rounds when they're clicked
+    buttons = document.querySelectorAll('.options > button');
+    buttons.forEach(element => {
+        element.addEventListener('click', (event) => {
+            // get player choice from button
+            playerChoice = element.value;
+            console.log(playerChoice)
+            computerChoice = getComputerChoice();
 
-
+            // play a round with given choices
+            roundWinner = playRound(playerChoice, computerChoice);
+            console.log(`Player played ${playerChoice}, Computer played ${computerChoice}, Winner: ${roundWinner}`)
+        })
+    });
+})
 
 function getComputerChoice() {
     // randomly chooses  one of three options for the computer
@@ -15,20 +35,6 @@ function getComputerChoice() {
     return choice;
 }
 
-function getPlayerChoice() {
-    return 'rock';
-    // prompts the player for their choice
-    playerChoice = prompt("Choice? (rock/paper/scissors)").toLowerCase();
-
-    // make sure it's one of the three choices
-    if (!options.includes(playerChoice)) {
-        alert('Please only enter Rock/Paper/Scissors!')
-        getPlayerChoice();
-    }
-
-    // otherwise return the answer
-    return playerChoice;
-}
 
 function playRound(playerChoice, computerChoice) {
     // evaluats a single round of rock paper scissors
@@ -66,36 +72,3 @@ function checkForWinner (computerWins, playerWins, round) {
 
     // if the game is in progress and nobody is far enough ahead return nothing
 }
-
-function playGame() {
-    let playerWins = 0;
-    let computerWins = 0;
-
-    // plays five rounds and gets the winner
-    for (let i = 1; i <= rounds; i++) {
-        const playerChoice = getPlayerChoice(); 
-        const computerChoice = getComputerChoice();
-
-        let roundWinner = playRound(playerChoice, computerChoice);
-
-
-        switch(roundWinner) {
-            case 'tie':
-                break; 
-            case 'player':
-                playerWins++;
-                break;
-            case 'computer':
-                computerWins++;
-                break;   
-        }
-        // if we check for a winner and there is one end the game
-        console.log(`round: ${i}`)
-        console.log(`Computer: ${computerWins}`, `Player: ${playerWins}`)
-        const winner = checkForWinner(computerWins, playerWins, i)
-        if (winner) {return winner;}
-    }
-}
-
-result = playGame()
-console.log(result)
