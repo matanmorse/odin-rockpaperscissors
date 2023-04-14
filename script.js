@@ -12,6 +12,7 @@ function getComputerChoice() {
 }
 
 function getPlayerChoice() {
+    return 'rock';
     // prompts the player for their choice
     playerChoice = prompt("Choice? (rock/paper/scissors)").toLowerCase();
 
@@ -40,12 +41,34 @@ function playRound(playerChoice, computerChoice) {
     
 }
 
+function checkForWinner (computerWins, playerWins, round) {
+    // check for ties first 
+    if (round === rounds) {
+        if (playerWins === computerWins) {
+            return 'tie'
+        }
+    }
+
+    // if a player doesn't have enough rounds left to come back, end the game
+    const roundsLeft = rounds - round;
+    const scoreDifference = Math.abs(computerWins - playerWins);
+    if ( scoreDifference > roundsLeft ) {
+        switch (playerWins > computerWins) {
+            case (true): return 'player';
+            case (false): return 'computer';
+        }
+    }
+    
+
+    // if the game is in progress and nobody is far enough ahead return nothing
+}
+
 function playGame() {
     let playerWins = 0;
     let computerWins = 0;
 
     // plays five rounds and gets the winner
-    for (let i = 0; i < rounds; i++) {
+    for (let i = 1; i <= rounds; i++) {
         const playerChoice = getPlayerChoice(); 
         const computerChoice = getComputerChoice();
 
@@ -63,20 +86,14 @@ function playGame() {
                 computerWins++;
                 break;   
         }
-        console.table(`Computer: ${computerWins}`, `Player: ${playerWins}`)
-    }
-    
-    // if we made 5 rounds and no winner check who has more points
-    if (computerWins === playerWins) {
-        return 'tie';
-    }
-    else if (computerWins > playerWins) {
-        return 'computer';
-    }
-    else {
-        return 'player';
+        // if we check for a winner and there is one end the game
+        console.log(`round: ${i}`)
+        console.log(`Computer: ${computerWins}`, `Player: ${playerWins}`)
+        const winner = checkForWinner(computerWins, playerWins, i)
+        if (winner) {return winner;}
     }
 }
 
 result = playGame()
-alert(result)
+console.log(result)
+alert(result.toUpperCase())
