@@ -10,7 +10,7 @@ div.main-content {
     margin: 1rem;
 }
 
-div.results, div.options {
+div.info, div.options {
     border: 2px solid #00ABE4;
     border-radius: 10px;
     background-color: #bdd9f9;
@@ -22,6 +22,7 @@ div.results, div.options {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 2rem;
 }
 
 div.options {
@@ -41,4 +42,11 @@ div.options {
 .options > *:hover {
     background-color: whitesmoke;
     cursor: pointer;
+}
+
+.score-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }

@@ -1,6 +1,6 @@
 const options = ['rock', 'scissors', 'paper'];
 const rounds = 5
-let round = rounds;
+let round = 1;
 let playerWins = 0;
 let computerWins = 0;
 let computerChoice = "";
@@ -9,21 +9,48 @@ let roundWinner = "";
 
 // initialize page 
 addEventListener('DOMContentLoaded', (event) => {
+    // init rounds left text
+    const roundsLeftText = document.querySelector('span.rounds-left');
+    roundsLeftText.textContent = rounds;
+
     // add functionality to buttons to play rounds when they're clicked
     buttons = document.querySelectorAll('.options > button');
     buttons.forEach(element => {
         element.addEventListener('click', (event) => {
             // get player choice from button
             playerChoice = element.value;
-            console.log(playerChoice)
             computerChoice = getComputerChoice();
 
             // play a round with given choices
             roundWinner = playRound(playerChoice, computerChoice);
             console.log(`Player played ${playerChoice}, Computer played ${computerChoice}, Winner: ${roundWinner}`)
+            updateScore(roundWinner);
+            console.log(`Computer: ${computerWins}, Player: ${playerWins}, Round: ${round}`)
+
+
+            // check for a winner after each round
+            gameWinner = checkForWinner(computerWins, playerWins, round) ?? "no winner";
+            console.log(gameWinner);
+            
+            round++;
         })
     });
 })
+
+// updates score based on a given round winner
+function updateScore(winner){
+    switch(winner){
+        case('computer'):
+            computerWins++;
+            break;
+        case('player'):
+            playerWins++;
+            break;
+        case('tie'):
+            break;
+    }
+}
+
 
 function getComputerChoice() {
     // randomly chooses  one of three options for the computer
@@ -38,7 +65,6 @@ function getComputerChoice() {
 
 function playRound(playerChoice, computerChoice) {
     // evaluats a single round of rock paper scissors
-    round--
     // check for ties
     if (playerChoice === computerChoice) return 'tie';
 
