@@ -10,23 +10,42 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div style="text-align: center; height: fit-content; margin: auto">ROCK PAPER SCISSORS</div>
-    <div></div>
-    <div class="main-content">
-        <div class="info">
-            <div class="result-text">Welcome to rock paper scissors!</div>
-            <div class="score-text">
-                <div>Computer: <strong><span class="computer-score">0</span></strong></div>
-                <div> Player: <strong><span class="player-score">0</span> </strong></div>
-                <div>Rounds left: <strong><span class="rounds-left"></span></strong></div>
+    <div class="layer">
+        <div class="main-content">
+            <h1 class="title">Welcome, Adventurer!</h1>
+            <div class="score-info">
+                <div class="score-box">
+                    <h2 class="score-title">Your Score</h2>
+                    <div class="player-score">100</div>
+                </div>
+                <div class="score-box">
+                    <h2 class="score-title">Lich's Score</h2>
+                    <div class="computer-score">100</div>
+                </div>
             </div>
-            <p clas="winner-text"></p>
-        </div>
-        <div class="options">
-            <button  value="rock">Rock</button>
-            <button value="paper">Paper</button>
-            <button value="scissors">Scissors</button>
+            <div class="result-text">First to five wins!</div>
+            <div class="options">
+                <div class="top-row">
+                    <img class="arrow" style="position:relative; top: 60px; rotate: 136deg;" src="/static/images/arrow.png" alt="arrow">
+                    <button  value="rock"><img class="choice-image" src="/static/images/dragon.png" alt="Dragon"></button>
+                    <img class="arrow" style =" 
+                    position: relative;
+                    top: 60px;
+                    rotate: 225deg;""
+                src="/static/images/arrow.png" alt="arrow">
+                </div>
+                <div class="bottom-row">
+                    <button value="paper" style="margin-right: 3rem;"><img class="choice-image" src="/static/images/tarrasque.png" alt="Tarrasque"></button>
+                    <img class="arrow" src="/static/images/arrow.png" style="
+                    position: relative;
+                    bottom: 20px;
+                    right: 10px;"
+                    alt="arrow">
+                    <button value="scissors" style="margin-left: 3rem;"><img class="choice-image" src="/static/images/kraken.png" alt="Kraken"></button>    
+                </div>
+            </div>
         </div>
     </div>
+
 </body>
 </html>

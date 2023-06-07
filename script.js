@@ -1,20 +1,21 @@
 const options = ['rock', 'scissors', 'paper'];
-const rounds = 5
+const rounds = 7
 let round = 1;
 let playerWins = 0;
 let computerWins = 0;
 let computerChoice = "";
 let playerChoice = "";
 let roundWinner = "";
+const buttons = document.querySelectorAll('.options > button');
+const winnerText = document.querySelector('p.winner-text')
+const roundsLeftText = document.querySelector('span.rounds-left');
 
 // initialize page 
 addEventListener('DOMContentLoaded', (event) => {
     // init rounds left text
-    const roundsLeftText = document.querySelector('span.rounds-left');
     roundsLeftText.textContent = rounds;
 
     // add functionality to buttons to play rounds when they're clicked
-    buttons = document.querySelectorAll('.options > button');
     buttons.forEach(element => {
         element.addEventListener('click', (event) => {
             // get player choice from button
@@ -31,11 +32,68 @@ addEventListener('DOMContentLoaded', (event) => {
             // check for a winner after each round
             gameWinner = checkForWinner(computerWins, playerWins, round) ?? "no winner";
             console.log(gameWinner);
+
+            let uiDict = buildUiDict(playerChoice, computerChoice, playerWins, computerWins, roundWinner, round);
             
+            // update user interface
+            updateUi(uiDict);
+
+            // if there is a winner end the game
+            if (gameWinner !== "no winner") {
+                endGame(gameWinner);
+            }
+
+            // if the game isn't over move on to next round
             round++;
         })
     });
 })
+
+function updateUi(uiDict) {
+    const resultText = document.querySelector('div.result-text');
+    resultText.textContent = `Player played ${uiDict['playerchoice']}, Computer played ${uiDict['computerchoice']}. ${uiDict['roundwinnertext']}.`;
+    
+    const computerScoreText = document.querySelector('span.computer-score');
+    computerScoreText.textContent = uiDict['computerwins'];
+
+    const playerScoreText = document.querySelector('span.player-score');
+    playerScoreText.textContent = uiDict['playerwins'];
+
+    roundsLeftText.textContent = uiDict['roundsleft']
+}
+
+
+// builds dict used in updating UI
+function buildUiDict (playerChoice, computerChoice, playerWins, computerWins, roundWinner, round){
+    const UiDict = {
+        'playerchoice': playerChoice,
+        'computerchoice': computerChoice,
+        'playerwins': playerWins,
+        'computerwins': computerWins,
+        'roundwinnertext': roundWinner != 'tie' ?  `${roundWinner} wins!`: 'This round is a tie',
+        'roundsleft': rounds - round,
+    };
+    return UiDict;
+}
+
+
+// sets UI necessary to end the game
+function endGame(gameWinner) { 
+    // disable buttons
+    buttons.forEach(element => {
+        element.disabled = true;
+    })
+
+    if (gameWinner !== "tie") {
+        winnerText.textContent = `${gameWinner} wins!`
+    }
+    else { 
+        winnerText.textContent = "It's a tie!"
+    }
+
+    // update rounds counter
+    roundsLeftText.textContent = 'None!'
+}
 
 // updates score based on a given round winner
 function updateScore(winner){

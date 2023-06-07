@@ -1,7 +1,57 @@
-body {
-    font-family: 'roboto';
+html {
+    height: 98vh;
 }
+body {
+    box-sizing: border-box;
+    margin: 0;
+    height: 100%;
+    font-family: 'roboto';
+    background-color: #a8a0e259;    
+    background-repeat:no-repeat;
+    background-size: cover;
+}
+
+.title {
+    color: #d45069;
+    font-size: 4em;
+}
+
+div.layer {
+    width: 100%;
+    height: 100%;
+}
+
+div.score-info {
+    display: flex;
+    flex-direction: row;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.player-score, .computer-score {
+    color: #d45069;
+    background-color: #a8a0e259;
+    border: 4px solid  #d45069;
+    padding: 1rem;
+    font-weight: bolder;
+    font-size: 20pt;
+}
+
+.result-text {
+    font-size: 15pt;
+    font-weight: bold;
+}
+
+img.choice-image {
+    height: 150px;
+}
+
+
 div.main-content {
+    color: #d45069;
+    text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,9 +61,10 @@ div.main-content {
 }
 
 div.info, div.options {
-    border: 2px solid #00ABE4;
+    position: relative;
+    border: 4px solid #000000;
     border-radius: 10px;
-    background-color: #bdd9f9;
+    background-color: #a8a0e259;
     padding: 15px;
 }
 
@@ -22,27 +73,33 @@ div.info, div.options {
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
 }
 
 div.options {
+    justify-content: center;
+    height: fit-content;
     display: flex;
-    gap: 2rem;
+    flex-direction: column;
+    gap: 5rem;
 }
 
-.options > * {
-    flex: 1;
+button {
     padding: 10px 20px;
-    font-size: large;
-    background-color: white;
-    border-radius: 5px;
-    border: black;
+    border: none;
+    background-color: transparent;
+    transition: 0.5s all;
+    border-radius: 10px;
 }
 
-.options > *:hover {
-    background-color: whitesmoke;
-    cursor: pointer;
+button:hover {
+    background-color: rgba(0, 0, 0, 0.2);
 }
+
+.arrow {
+    height: 80px;
+}
+
 
 .score-text {
     display: flex;
