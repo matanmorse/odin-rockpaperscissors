@@ -11,9 +11,14 @@ body {
     background-size: cover;
 }
 
-.title {
-    color: #d45069;
+.main-title {
     font-size: 4em;
+    color: black;
+}
+
+.subtitle {
+    color: #79192b;
+    font-size: 2em;
 }
 
 div.layer {
@@ -39,7 +44,7 @@ div.score-info {
     font-size: 20pt;
 }
 
-.result-text {
+.result-text, .winner-text {
     font-size: 15pt;
     font-weight: bold;
 }
@@ -93,8 +98,21 @@ button {
 }
 
 button:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
+
+button[value="rock"]:hover {
+    background-color: rgba(30, 95, 30, 0.25)
+}
+
+button[value="paper"]:hover {
+    background-color: rgba(236, 26, 26, 0.25)
+}
+
+button[value="scissors"]:hover {
+    background-color: rgba(26, 89, 236, 0.25)
+}
+
 
 .arrow {
     height: 80px;
