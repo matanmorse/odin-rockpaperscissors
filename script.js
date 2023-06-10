@@ -61,8 +61,36 @@ function updateUi(uiDict) {
 
     const playerScoreText = document.querySelector('div.player-score');
     playerScoreText.textContent = uiDict['playerwins'];
+
+    // update images in the score panels
+    const playerImage = document.querySelector('div.player-circle');
+    const computerImage = document.querySelector('div.computer-circle');
+    playerImage.style.backgroundImage = `url(${getImageFromChoice(uiDict['playerchoice'])})`
+    computerImage.style.backgroundImage = `url(${getImageFromChoice(uiDict['computerchoice'])})`
+
+    // update circle borders accordingly 
+    if (uiDict['roundwinner'] === 'player') {
+        playerImage.style.borderColor = 'green'
+        computerImage.style.borderColor = 'red';
+    }
+    else if (uiDict['roundwinner'] === 'computer') {
+        playerImage.style.borderColor = 'red'
+        computerImage.style.borderColor = 'green';
+    }
+    else {
+        playerImage.style.borderColor = 'beige'
+        computerImage.style.borderColor = 'lightyellow';
+    }
 }
 
+// given a choice (rock, paper, scissors) return the string of the location of the image associated with that choice
+function getImageFromChoice (choice) {
+    switch (choice) {
+        case 'rock': return 'static/images/tarrasque.png'
+        case 'scissors': return 'static/images/kraken.png'
+        case 'paper': return 'static/images/dragon.png'
+    }
+}
 
 // builds dict used in updating UI
 function buildUiDict (playerChoice, computerChoice, playerWins, computerWins, roundWinner){
@@ -86,6 +114,7 @@ function buildUiDict (playerChoice, computerChoice, playerWins, computerWins, ro
         'playerwins': playerWins,
         'computerwins': computerWins,
         'roundwinnertext': resultTextContent,
+        'roundwinner': roundWinner
     };
     return UiDict;
 }

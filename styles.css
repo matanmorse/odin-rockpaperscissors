@@ -6,7 +6,7 @@ body {
     margin: 0;
     height: 100%;
     font-family: 'roboto';
-    background-color: blanchedalmond;    
+    background-color: gainsboro;    
     background-repeat:no-repeat;
     background-size: cover;
 }
@@ -93,6 +93,8 @@ div.middle-row {
     gap: 1rem;
     margin-bottom: 1rem;
 }
+
+
 .result-text {
     display: flex;
     flex-direction: column;
@@ -121,10 +123,15 @@ div.box {
 }
 
 div.circle-placeholder {
+    background-color: #C0CAD6;
+    transition: all .2s;
     width: 100px;
     height: 100px;
     border-radius: 100%;
-    border: 3px solid black;
+    border: 6px solid black;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 button {
