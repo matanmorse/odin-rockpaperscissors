@@ -14,7 +14,7 @@ const playerNameChanges = {
     'computer':'Lich'
 }
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('button.choice-button');
 const winnerText = document.querySelector('div.winner-text')
 const roundsLeftText = document.querySelector('span.rounds-left');
 
@@ -71,6 +71,7 @@ function updateUi(uiDict) {
     // update circle borders accordingly 
     if (uiDict['roundwinner'] === 'player') {
         playerImage.style.borderColor = 'green'
+        playerImage.classList.add('winner');
         computerImage.style.borderColor = 'red';
     }
     else if (uiDict['roundwinner'] === 'computer') {

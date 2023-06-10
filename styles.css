@@ -6,20 +6,21 @@ body {
     margin: 0;
     height: 100%;
     font-family: 'roboto';
-    background-color: gainsboro;    
+    background-color: #E7E0DA;    
     background-repeat:no-repeat;
     background-size: cover;
 }
 
 .main-title {
     font-size: 3em;
-    color: black;
+    color: #3F381E;
 }
 
 .subtitle {
     color: #79192b;
     font-size: 1.5em;
 }
+
 
 div.layer {
     width: 100%;
@@ -47,9 +48,9 @@ div.score-box {
 }
 
 .player-score, .computer-score {
-    color: #d45069;
+    color: #3F381E;
     background-color: rgb(255, 248, 236);
-    border: 4px solid  #d45069;
+    border: 4px solid  #3F381E;
     padding: 0.5rem;
     width: 50%;
     font-weight: bolder;
@@ -67,7 +68,7 @@ img.choice-image {
 
 
 div.main-content {
-    color: #d45069;
+    color: #3F381E;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -81,7 +82,7 @@ div.info, div.options {
     position: relative;
     border: 4px solid #000000;
     border-radius: 10px;
-    background-color: rgb(255, 248, 236);
+    background-color: #F8F4F1;
     padding: 15px;
 }
 
@@ -123,7 +124,7 @@ div.box {
 }
 
 div.circle-placeholder {
-    background-color: #C0CAD6;
+    background-color: #F8F4F1;
     transition: all .2s;
     width: 100px;
     height: 100px;
@@ -170,4 +171,14 @@ button[value="scissors"]:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+button.play-again {
+    visibility: hidden;
+    background-color: #3F381E;
+    font-weight: bolder;
+    color: white;
+    border: 2px solid black;
+    margin-top: 1rem;
+    transition: 1s all;
 }
