@@ -134,6 +134,9 @@ function endGame(gameWinner) {
     else { 
         winnerText.textContent = "It's a tie!"
     }
+
+    const playAgainButton = document.querySelector('button.play-again');
+    playAgainButton.style.visibility = 'visible';
 }
 
 // updates score based on a given round winner
